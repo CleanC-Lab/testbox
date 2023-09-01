@@ -2,7 +2,7 @@ ARG VERSION=1.72.0-slim-bookworm
 FROM rust:${VERSION}
 
 RUN apt update \
- && apt install ca-certificates curl gnupg pkg-config libssl-dev protobuf-compiler python3 python3-full python3-pip -y \
+ && apt install ca-certificates curl gnupg pkg-config libssl-dev protobuf-compiler git python3 python3-full python3-pip -y \
  && rm -rf /var/lib/apt/lists/*
 
 RUN install -m 0755 -d /etc/apt/keyrings \
