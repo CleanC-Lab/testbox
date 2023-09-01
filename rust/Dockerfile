@@ -18,4 +18,8 @@ RUN install -m 0755 -d /etc/apt/keyrings \
 
 RUN pip3 install --break-system-packages reuse # Hey, it is a docker container, so... it does not damage so much.
 
+# Add clippy and rustfmt
+RUN rustup component add rustfmt \
+ && rustup component add clippy
+
 RUN cargo install cargo-nextest
