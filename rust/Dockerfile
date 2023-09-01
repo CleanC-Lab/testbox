@@ -2,7 +2,7 @@ ARG VERSION=1.72.0-slim-bookworm
 FROM rust:${VERSION}
 
 RUN apt update \
- && apt install ca-certificates curl gnupg pkg-config libssl-dev protobuf-compiler -y \
+ && apt install ca-certificates curl gnupg pkg-config libssl-dev protobuf-compiler python3 python3-full python3-pip -y \
  && rm -rf /var/lib/apt/lists/*
 
 RUN install -m 0755 -d /etc/apt/keyrings \
@@ -15,5 +15,7 @@ RUN install -m 0755 -d /etc/apt/keyrings \
  && apt update \
  && apt install docker-ce-cli -y \
  && rm -rf /var/lib/apt/lists/*
+
+RUN pip3 install --break-system-packages reuse # Hey, it is a docker container, so... it does not damage so much.
 
 RUN cargo install cargo-nextest
