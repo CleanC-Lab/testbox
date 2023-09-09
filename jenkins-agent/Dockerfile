@@ -15,6 +15,7 @@ RUN apk add --no-cache \
       procps \
       tzdata \
       tzdata-utils \
+      qemu-aarch64 \
     && rm -rf /tmp/*.apk /tmp/gcc /tmp/gcc-libs.tar* /tmp/libz /tmp/libz.tar.xz /var/cache/apk/*
 
 # Install Java
