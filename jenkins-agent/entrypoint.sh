@@ -1,7 +1,10 @@
 #!/bin/bash
 export DOCKER_HOST=unix:///var/run/docker.sock
 
-if [ ! -e /var/run/docker.sock ]; then
+# Test docker.sock using socat
+socat -u OPEN:/dev/null UNIX-CONNECT:/var/run/docker.sock
+
+if [ "$?" != '0' ]; then
     echo "Docker socket is not forwarded. Spawning docker..."
     /usr/local/bin/dockerd-entrypoint.sh dockerd &
 else
