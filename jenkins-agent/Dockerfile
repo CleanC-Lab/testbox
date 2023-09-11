@@ -16,6 +16,7 @@ RUN apk add --no-cache \
       tzdata \
       tzdata-utils \
       qemu-aarch64 \
+      socat \
     && rm -rf /tmp/*.apk /tmp/gcc /tmp/gcc-libs.tar* /tmp/libz /tmp/libz.tar.xz /var/cache/apk/*
 
 # Install Java
