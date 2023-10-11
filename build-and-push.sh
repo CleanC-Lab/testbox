@@ -26,3 +26,9 @@ VERSION="$RUST_VERSION-slim-bookworm"
 docker-build --build-arg VERSION="$VERSION"
 docker-push
 popd
+
+pushd docker
+VERSION="24"
+docker-build --build-arg VERSION="$VERSION"
+docker-push
+popd
