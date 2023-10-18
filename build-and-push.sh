@@ -4,7 +4,7 @@ IMAGE_NAMESPACE="ghcr.io/cleanc-lab"
 
 MSJDK_VERSION="17.0.8.1"
 JENKINS_AGENT_VERSION="3148.v532a_7e715ee3"
-RUST_VERSION="1.72.0"
+RUST_VERSION="1.73.0"
 
 function docker-build () {
     docker build -t "${IMAGE_NAMESPACE}/${PWD##*/}:latest" -t "${IMAGE_NAMESPACE}/${PWD##*/}:${VERSION}" $* .
