@@ -1,15 +1,28 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'ghcr.io/cleanc-lab/docker:latest'
+            args '--privileged -v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
     stages {
+        stage('Docker login') {
+            environment {
+                GHCR_TOKEN = credentials('jenkins-github-pat-package-rw')
+            }
+            steps {
+                sh 'echo $GHCR_TOKEN_PSW | docker login ghcr.io -u $GHCR_TOKEN_USR --password-stdin'
+            }
+        }
         stage('Build') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'cleanc-github-app',
-                                          usernameVariable: 'GITHUB_APP',
-                                          passwordVariable: 'GITHUB_ACCESS_TOKEN')]) {
-                    sh 'echo "$GITHUB_ACCESS_TOKEN" | docker login ghcr.io -u "$GITHUB_APP" --password-stdin'
-                    sh './build-and-push.sh'
-                }
+                sh './build-and-push.sh'
             }
+        }
+    }
+    post {
+        always {
+            sh 'docker logout "ghcr.io"'
         }
     }
 }
