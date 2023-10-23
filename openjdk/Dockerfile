@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/openjdk/jdk:17-ubuntu
 
 RUN apt-get update && \
-    apt-get install -y python3 curl which bash && \
+    apt-get install -y python3 curl bash && \
     rm -rf /var/lib/apt/lists/*
 
 RUN curl https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz > /tmp/google-cloud-sdk.tar.gz
