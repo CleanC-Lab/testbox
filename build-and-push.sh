@@ -32,3 +32,8 @@ VERSION="24"
 docker-build --build-arg VERSION="$VERSION"
 docker-push
 popd
+
+pushd openjdk
+docker-build
+docker-push
+popd
