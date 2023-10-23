@@ -34,6 +34,7 @@ docker-push
 popd
 
 pushd openjdk
+VERSION="17"
 docker-build
 docker-push
 popd
