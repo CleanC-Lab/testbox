@@ -12,7 +12,7 @@ RUN mkdir -p /usr/local/gcloud \
   && /usr/local/gcloud/google-cloud-sdk/install.sh
 
 # Installing firebase
-RUN curl -sL https://firebase.tools | bash
+RUN curl -sL https://firebase.tools | upgrade=true bash
 
 # Adding the package path to local
 ENV PATH $PATH:/usr/local/gcloud/google-cloud-sdk/bin
