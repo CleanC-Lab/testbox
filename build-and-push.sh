@@ -3,7 +3,7 @@
 IMAGE_NAMESPACE="ghcr.io/cleanc-lab"
 
 MSJDK_VERSION="17.0.8.1"
-JENKINS_AGENT_VERSION="3160.vd76b_9ddd10cc"
+JENKINS_AGENT_VERSION="3186.vc3b_7249b_87eb_"
 RUST_VERSION="1.73.0"
 
 function docker-build () {
@@ -14,6 +14,8 @@ function docker-push () {
     docker push "${IMAGE_NAMESPACE}/${PWD##*/}:latest"
     docker push "${IMAGE_NAMESPACE}/${PWD##*/}:${VERSION}"
 }
+
+set -e
 
 pushd jenkins-agent
 VERSION="$JENKINS_AGENT_VERSION"

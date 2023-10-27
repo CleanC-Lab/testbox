@@ -1,7 +1,7 @@
 FROM docker:24-dind
 
 ARG MSJDK_VERSION="17.0.8.1"
-ARG JENKINS_AGENT_VERSION="3148.v532a_7e715ee3"
+ARG JENKINS_AGENT_VERSION="3186.vc3b_7249b_87eb_"
 
 RUN apk add --no-cache \
       curl \
