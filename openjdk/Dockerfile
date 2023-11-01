@@ -17,12 +17,12 @@ RUN mkdir -p /usr/local/node \
 # Installing nodejs and npm
 # RUN apt-get install -y nodejs npm
 
-# Installing firebase
-RUN npm install -g firebase-tools
-RUN chmod +x /usr/local/node/node-v21.1.0-linux-x64/bin/firebase
-
 # Adding the package path to local
 ENV PATH $PATH:/usr/local/gcloud/google-cloud-sdk/bin
 ENV PATH $PATH:/usr/local/node/node-v21.1.0-linux-x64/bin
+
+# Installing firebase cli
+RUN npm install -g firebase-tools
+RUN chmod +x /usr/local/node/node-v21.1.0-linux-x64/bin/firebase
 
 RUN bash
