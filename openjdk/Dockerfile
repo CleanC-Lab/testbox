@@ -8,11 +8,11 @@ RUN curl https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz > /tm
 
 # Installing the package
 RUN mkdir -p /usr/local/gcloud \
-  && tar -C /usr/local/gcloud -xvf /tmp/google-cloud-sdk.tar.gz \
+  && tar -C /usr/local/gcloud -xf /tmp/google-cloud-sdk.tar.gz \
   && /usr/local/gcloud/google-cloud-sdk/install.sh
 
 RUN mkdir -p /usr/local/node \
-  && tar -C /usr/local/node -xvf /tmp/node-v21.1.0-linux-x64.tar.xz
+  && tar -C /usr/local/node -xf /tmp/node-v21.1.0-linux-x64.tar.xz
 
 # Installing nodejs and npm
 # RUN apt-get install -y nodejs npm
