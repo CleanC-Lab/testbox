@@ -12,3 +12,6 @@ RUN mkdir -p /usr/local/gcloud \
 
 # Adding the package path to local
 ENV PATH $PATH:/usr/local/gcloud/google-cloud-sdk/bin
+
+RUN curl -L --output /usr/bin/gh-fetch https://github.com/gruntwork-io/fetch/releases/download/v0.4.6/fetch_linux_amd64 \
+ && chmod 755 /usr/bin/gh-fetch
