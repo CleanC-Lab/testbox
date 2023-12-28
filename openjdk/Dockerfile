@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/openjdk/jdk:17-ubuntu
 
 RUN apt-get update && \
-    apt-get install -y python3 curl bash && \
+    apt-get install -y python3 curl bash xz-utils && \
     rm -rf /var/lib/apt/lists/*
 RUN curl https://nodejs.org/dist/v21.1.0/node-v21.1.0-linux-x64.tar.xz > /tmp/node-v21.1.0-linux-x64.tar.xz
 RUN curl https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz > /tmp/google-cloud-sdk.tar.gz
