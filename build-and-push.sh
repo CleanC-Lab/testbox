@@ -3,7 +3,7 @@
 IMAGE_NAMESPACE="ghcr.io/cleanc-lab"
 
 MSJDK_VERSION="17.0.9"
-JENKINS_AGENT_VERSION="3198.v03a_401881f3e"
+JENKINS_AGENT_VERSION="3206.vb_15dcf73f6a_9"
 RUST_VERSION="1.75.0"
 
 function docker-build () {
