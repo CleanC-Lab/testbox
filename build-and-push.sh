@@ -30,7 +30,7 @@ docker-push
 popd
 
 pushd docker
-VERSION="24"
+VERSION="25"
 docker-build --build-arg VERSION="$VERSION"
 docker-push
 popd

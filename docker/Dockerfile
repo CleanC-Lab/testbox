@@ -1,4 +1,4 @@
-ARG VERSION=24
+ARG VERSION=25
 FROM docker:${VERSION}
 
 RUN apk add --no-cache python3 curl which bash
