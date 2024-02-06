@@ -36,4 +36,6 @@ if [ "$try" -ge 5 ]; then
     exit 1
 fi
 
+echo "Launching jenkins agent. Hold tight!"
+
 exec /usr/local/bin/jenkins-agent
