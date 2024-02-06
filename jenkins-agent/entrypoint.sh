@@ -22,4 +22,18 @@ else
     echo "Can communicate with docker. Using given docker socket."
 fi
 
+# Before kicking jenkins-agent up, healthcheck docker
+try=0
+until [ "$try" -ge 5 ]; do
+    echo "Testing docker socket... $((try+1))"
+    curl -o /dev/null -f -s --unix-socket /var/run/docker.sock http://docker/version && break
+    try=$((try+1))
+    sleep 5
+done
+
+if [ "$try" -ge 5 ]; then
+    echo "Failed to check docker after 5 tries. Halting container."
+    exit 1
+fi
+
 exec /usr/local/bin/jenkins-agent
