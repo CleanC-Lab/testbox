@@ -1,4 +1,4 @@
-FROM docker:25-dind
+FROM docker:26-dind
 
 ARG MSJDK_VERSION="17.0.10"
 ARG JENKINS_AGENT_VERSION="3206.vb_15dcf73f6a_9"
