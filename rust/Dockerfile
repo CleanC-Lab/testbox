@@ -26,4 +26,8 @@ RUN rustup component add rustfmt \
 RUN wget -O - https://github.com/github-release/github-release/releases/download/v0.10.0/linux-amd64-github-release.bz2 | bzcat > /usr/bin/github-release \
  && chmod 755 /usr/bin/github-release
 
-RUN cargo install cargo-nextest
+RUN cargo install cargo-nextest \
+ && cargo install cargo-machete \
+ && cargo install cargo-hack \
+ && cargo install typos-cli \
+ && rm -rf /usr/local/cargo/registry
