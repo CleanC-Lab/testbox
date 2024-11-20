@@ -1,4 +1,4 @@
-ARG VERSION=1.80.0-slim-bookworm
+ARG VERSION=1.82.0-slim-bookworm
 FROM rust:${VERSION}
 
 RUN apt update \
