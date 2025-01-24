@@ -8,6 +8,9 @@ RUN ./install-opentofu.sh --install-method standalone --install-path / --symlink
 
 ## This is your stage:
 FROM docker.io/debian:bookworm
+RUN apt update \
+ && apt install ca-certificates -y \
+ && rm -rf /var/lib/apt/lists/*
 COPY --from=tofu /tofu /usr/local/bin/tofu
 
 # Add your commands here
