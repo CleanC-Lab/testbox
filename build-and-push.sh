@@ -40,3 +40,9 @@ VERSION="17"
 docker-build
 docker-push
 popd
+
+pushd opentofu
+VERSION="1.9"
+docker-build
+docker-push
+popd
