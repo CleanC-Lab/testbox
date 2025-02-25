@@ -46,3 +46,9 @@ VERSION="1.9"
 docker-build
 docker-push
 popd
+
+pushd node
+VERSION="22"
+docker-build --build-arg VERSION="$VERSION"
+docker-push
+popd
