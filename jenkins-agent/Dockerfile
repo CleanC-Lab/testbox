@@ -1,6 +1,6 @@
 FROM docker:27-dind
 
-ARG MSJDK_VERSION="21.0.7"
+ARG TEMURIN_VERSION="21.0.7+6"
 ARG JENKINS_AGENT_VERSION="3309.v27b_9314fd1a_4"
 
 RUN apk add --no-cache \
@@ -19,15 +19,17 @@ RUN apk add --no-cache \
       socat \
     && rm -rf /tmp/*.apk /tmp/gcc /tmp/gcc-libs.tar* /tmp/libz /tmp/libz.tar.xz /var/cache/apk/*
 
+# Configure JAVA_HOME and PATH
+ENV JAVA_HOME=/opt/java/openjdk
+ENV PATH="${JAVA_HOME}/bin:${PATH}"
+
 # Install Java
-RUN wget -O /opt/java.tar.gz "https://aka.ms/download-jdk/microsoft-jdk-${MSJDK_VERSION}-linux-x64.tar.gz" \
+RUN wget -O /opt/java.tar.gz "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-${TEMURIN_VERSION}/OpenJDK21U-jdk_x64_alpine-linux_hotspot_$(echh $TEMURIN_VERSION | sed 's/\+/_/g').tar.gz" \
  && mkdir -p /opt/java/openjdk \
  && cd /opt/java/openjdk \
  && tar xf /opt/java.tar.gz --strip-components=1 -C . \
- && rm -f /opt/java.tar.gz
-
-ENV JAVA_HOME=/opt/java/openjdk
-ENV PATH="${JAVA_HOME}/bin:${PATH}"
+ && rm -f /opt/java.tar.gz \
+ && echo "Testing java..." && java --version
 
 # Install jenkins agent
 ADD "https://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/${JENKINS_AGENT_VERSION}/remoting-${JENKINS_AGENT_VERSION}.jar" /usr/share/jenkins/agent.jar

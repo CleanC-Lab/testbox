@@ -2,7 +2,7 @@
 
 IMAGE_NAMESPACE="ghcr.io/cleanc-lab"
 
-MSJDK_VERSION="21.0.7"
+TEMURIN_VERSION="21.0.7+6"
 JENKINS_AGENT_VERSION="3309.v27b_9314fd1a_4"
 RUST_VERSION="1.86.0"
 
@@ -19,7 +19,7 @@ set -e
 
 pushd jenkins-agent
 VERSION="$JENKINS_AGENT_VERSION"
-docker-build --build-arg JENKINS_AGENT_VERSION="$JENKINS_AGENT_VERSION" --build-arg MSJDK_VERSION="$MSJDK_VERSION"
+docker-build --build-arg JENKINS_AGENT_VERSION="$JENKINS_AGENT_VERSION" --build-arg TEMURIN_VERSION="$TEMURIN_VERSION"
 docker-push
 popd
 
