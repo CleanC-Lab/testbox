@@ -24,7 +24,7 @@ ENV JAVA_HOME=/opt/java/openjdk
 ENV PATH="${JAVA_HOME}/bin:${PATH}"
 
 # Install Java
-RUN wget -O /opt/java.tar.gz "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-${TEMURIN_VERSION}/OpenJDK21U-jdk_x64_alpine-linux_hotspot_$(echh $TEMURIN_VERSION | sed 's/\+/_/g').tar.gz" \
+RUN wget -O /opt/java.tar.gz "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-${TEMURIN_VERSION}/OpenJDK21U-jdk_x64_alpine-linux_hotspot_$(echo ${TEMURIN_VERSION} | sed 's/+/_/g').tar.gz" \
  && mkdir -p /opt/java/openjdk \
  && cd /opt/java/openjdk \
  && tar xf /opt/java.tar.gz --strip-components=1 -C . \
